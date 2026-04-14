@@ -1,17 +1,40 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # gethired
+
+Turn any job description into a 1-page, ATS-optimized resume using AI.
+
+## 🚀 Overview
+
+gethired is an AI-powered resume builder that:
+- Extracts job requirements and keywords
+- Maps them to your real experience
+- Generates a clean, recruiter-ready, one-page resume
+
+## ⚙️ Tech Stack
+
+- React + Vite
+- Supabase (Auth + DB)
+- Multiple AI Providers (Groq, Gemini, Cohere, Mistral, OpenRouter)
+- Razorpay (Payments)
+
+## 🧠 How It Works
+
+1. Paste job description + company name  
+2. Add your resume / background  
+3. AI rewrites your experience (no fake data)  
+4. Get a 1-page ATS-friendly resume instantly  
+
+## ✨ Features
+
+- AI-tailored resumes (real experience only)
+- Multi-provider fallback system
+- ATS keyword optimization
+- One-page auto formatting
+- Multiple templates + fonts
+- PDF export
+- Pay-per-resume + lifetime plan
+
+## 📦 Setup
+
+```bash
+npm install
+npm run dev
