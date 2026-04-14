@@ -1,40 +1,14 @@
 # gethired
 
-Turn any job description into a 1-page, ATS-optimized resume using AI.
+From job description → interview-ready resume.
 
-## 🚀 Overview
+## Uses
 
-gethired is an AI-powered resume builder that:
-- Extracts job requirements and keywords
-- Maps them to your real experience
-- Generates a clean, recruiter-ready, one-page resume
-
-## ⚙️ Tech Stack
-
-- React + Vite
-- Supabase (Auth + DB)
-- Multiple AI Providers (Groq, Gemini, Cohere, Mistral, OpenRouter)
-- Razorpay (Payments)
-
-## 🧠 How It Works
-
-1. Paste job description + company name  
-2. Add your resume / background  
-3. AI rewrites your experience (no fake data)  
-4. Get a 1-page ATS-friendly resume instantly  
-
-## ✨ Features
-
-- AI-tailored resumes (real experience only)
-- Multi-provider fallback system
-- ATS keyword optimization
-- One-page auto formatting
-- Multiple templates + fonts
-- PDF export
-- Pay-per-resume + lifetime plan
-
-## 📦 Setup
-
-```bash
-npm install
-npm run dev
+- Instantly adapt your resume to any role with precision  
+- Translate your experience into what companies actually look for  
+- Align with job-specific keywords, expectations, and signals  
+- Generate clean, one-page resumes built for recruiter attention  
+- Increase ATS match and improve shortlist probability  
+- Iterate across multiple applications without rewriting from scratch  
+- Preserve authenticity — no fabricated metrics or inflated claims  
+- Deliver concise, high-impact resumes ready for submission  
