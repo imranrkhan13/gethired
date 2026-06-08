@@ -531,47 +531,56 @@ const C = {
 // ─── GLOBAL STYLES ─────────────────────────────────────────────────────────────
 const GS = () => (
   <style>{`
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Inter:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;background:${C.bg};color:${C.text}}
+
     @keyframes spin{to{transform:rotate(360deg)}}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
     @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
-    @keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+    @keyframes scaleIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
     @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .fade-in{animation:fadeIn .4s ease both}
-    .fade-in-1{animation:fadeIn .5s .08s ease both}
-    .fade-in-2{animation:fadeIn .5s .18s ease both}
-    .fade-in-3{animation:fadeIn .5s .3s ease both}
-    .fade-in-4{animation:fadeIn .5s .45s ease both}
-    .scale-in{animation:scaleIn .25s ease both}
+    @keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(99,102,241,.4)}70%{box-shadow:0 0 0 12px rgba(99,102,241,0)}100%{box-shadow:0 0 0 0 rgba(99,102,241,0)}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+
+    .fade-in{animation:fadeIn .5s cubic-bezier(.22,1,.36,1) both}
+    .fade-in-1{animation:fadeIn .5s .1s cubic-bezier(.22,1,.36,1) both}
+    .fade-in-2{animation:fadeIn .5s .2s cubic-bezier(.22,1,.36,1) both}
+    .fade-in-3{animation:fadeIn .5s .32s cubic-bezier(.22,1,.36,1) both}
+    .fade-in-4{animation:fadeIn .5s .46s cubic-bezier(.22,1,.36,1) both}
+    .scale-in{animation:scaleIn .28s ease both}
+    .slide-up{animation:slideUp .7s cubic-bezier(.22,1,.36,1) both}
     .ske{background:linear-gradient(90deg,${C.border} 0%,${C.surfaceAlt} 50%,${C.border} 100%);background-size:400px 100%;animation:shimmer 1.5s infinite linear;border-radius:4px}
 
-    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:${C.accent};color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;white-space:nowrap}
-    .btn-primary:hover:not(:disabled){background:${C.accentDark};transform:translateY(-1px);box-shadow:0 8px 24px rgba(99,102,241,.35)}
-    .btn-primary:active:not(:disabled){transform:none}
-    .btn-primary:disabled{opacity:.4;cursor:not-allowed}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:${C.accent};color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;white-space:nowrap;letter-spacing:.1px}
+    .btn-primary:hover:not(:disabled){background:${C.accentDark};transform:translateY(-2px);box-shadow:0 12px 28px rgba(99,102,241,.4)}
+    .btn-primary:active:not(:disabled){transform:translateY(0)}
+    .btn-primary:disabled{opacity:.38;cursor:not-allowed}
 
-    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:${C.surface};color:${C.text};border:1.5px solid ${C.border};border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;white-space:nowrap}
-    .btn-secondary:hover{background:${C.surfaceAlt};border-color:${C.accent}50}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:${C.surface};color:${C.text};border:1.5px solid ${C.border};border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+    .btn-secondary:hover{background:${C.surfaceAlt};border-color:${C.accent}60;transform:translateY(-1px)}
 
-    .btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:none;color:${C.textMuted};border:1.5px solid ${C.border};border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;white-space:nowrap}
-    .btn-ghost:hover{color:${C.text};background:${C.surfaceAlt}}
+    .btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:none;color:${C.textMuted};border:1.5px solid ${C.border};border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+    .btn-ghost:hover{color:${C.text};background:${C.surfaceAlt};border-color:${C.borderLight}}
 
-    .btn-danger{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(244,63,94,.06);color:#f43f5e;border:1px solid rgba(244,63,94,.15);border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif}
-    .btn-danger:hover{background:rgba(244,63,94,.12);border-color:rgba(244,63,94,.3)}
+    .btn-danger{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:rgba(244,63,94,.06);color:#f43f5e;border:1px solid rgba(244,63,94,.15);border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif}
+    .btn-danger:hover{background:rgba(244,63,94,.14);border-color:rgba(244,63,94,.35)}
 
-    .input-dark{width:100%;padding:11px 14px;background:${C.surface};border:1.5px solid ${C.border};border-radius:8px;color:${C.text};font-size:14px;font-family:'DM Sans',sans-serif;transition:all .18s;resize:vertical;outline:none;line-height:1.6}
+    .input-dark{width:100%;padding:11px 14px;background:${C.surface};border:1.5px solid ${C.border};border-radius:9px;color:${C.text};font-size:14px;font-family:'DM Sans',sans-serif;transition:all .18s;resize:vertical;outline:none;line-height:1.65}
     .input-dark::placeholder{color:${C.textLight}}
-    .input-dark:focus{border-color:${C.accent};background:${C.surfaceAlt};box-shadow:0 0 0 3px rgba(99,102,241,.1)}
+    .input-dark:focus{border-color:${C.accent};background:${C.surfaceAlt};box-shadow:0 0 0 3px rgba(99,102,241,.12)}
 
-    .card{background:${C.surface};border:1.5px solid ${C.border};border-radius:12px;transition:all .18s}
-    .card:hover{border-color:${C.accent}40}
+    .card{background:${C.surface};border:1.5px solid ${C.border};border-radius:14px;transition:all .2s}
+    .card:hover{border-color:${C.accent}50;transform:translateY(-1px);box-shadow:0 8px 32px rgba(0,0,0,.25)}
 
-    ::-webkit-scrollbar{width:4px;height:4px}
+    .glass{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(20px)}
+
+    ::-webkit-scrollbar{width:3px;height:3px}
     ::-webkit-scrollbar-track{background:transparent}
     ::-webkit-scrollbar-thumb{background:${C.border};border-radius:2px}
 
@@ -645,185 +654,666 @@ const Logo = ({ size = "md" }) => {
 };
 
 // ─── LANDING ──────────────────────────────────────────────────────────────────
+// ─── LANDING ──────────────────────────────────────────────────────────────────
 const Landing = ({ onSignIn }) => {
-  const [vis, setVis] = useState(false);
-  useEffect(() => { setTimeout(() => setVis(true), 60); }, []);
+  const IS = "'Instrument Serif', serif";
+  const IF = "'DM Sans', sans-serif";
+  const CR = "#f5f0eb";
+  const BL = "#1a1612";
+  const MU = "#8c7b6e";
+  const AC = "#6366f1";
+
+  const [introOver, setIntroOver] = useState(false);
+  const [introPhase, setIntroPhase] = useState(0); // 0=logo, 1=expand, 2=done
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  // ── cinematic intro sequence ──
+  useEffect(() => {
+    const t1 = setTimeout(() => setIntroPhase(1), 900);   // logo shown → start expand
+    const t2 = setTimeout(() => setIntroPhase(2), 1800);  // expand → fade out overlay
+    const t3 = setTimeout(() => setIntroOver(true), 2600); // overlay gone
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, []);
+
+  const handlePlayToggle = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (videoPlaying) { v.pause(); setVideoPlaying(false); }
+    else { v.play(); setVideoPlaying(true); }
+  };
+
+  // ── SVG cloud band ──
+  const CloudBand = ({ id = "a", flip = false, fromColor = CR, toColor = CR }) => (
+    <div style={{ position: "relative", height: 220, overflow: "hidden", pointerEvents: "none", marginTop: -1, marginBottom: -1 }}>
+      <svg viewBox="0 0 1440 220" preserveAspectRatio="none" style={{ width: "100%", height: "100%", display: "block" }} xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id={`cga${id}`} cx="25%" cy="65%"><stop offset="0%" stopColor="#d8cfe8" stopOpacity=".95" /><stop offset="100%" stopColor="transparent" stopOpacity="0" /></radialGradient>
+          <radialGradient id={`cgb${id}`} cx="72%" cy="52%"><stop offset="0%" stopColor="#f0d0e8" stopOpacity=".9" /><stop offset="100%" stopColor="transparent" stopOpacity="0" /></radialGradient>
+          <radialGradient id={`cgc${id}`} cx="50%" cy="75%"><stop offset="0%" stopColor="#c8d8f4" stopOpacity=".75" /><stop offset="100%" stopColor="transparent" stopOpacity="0" /></radialGradient>
+          <filter id={`bf1${id}`}><feGaussianBlur stdDeviation="7" /></filter>
+          <filter id={`bf2${id}`}><feGaussianBlur stdDeviation="13" /></filter>
+        </defs>
+
+        {/* sky fill */}
+        <rect width="1440" height="220" fill={`url(#cgc${id})`} opacity=".55" />
+
+        {/* far back clouds — large, blurry */}
+        <ellipse cx="200" cy="160" rx="280" ry="75" fill={`url(#cga${id})`} filter={`url(#bf2${id})`} opacity=".6" />
+        <ellipse cx="750" cy="140" rx="350" ry="90" fill={`url(#cgb${id})`} filter={`url(#bf2${id})`} opacity=".5" />
+        <ellipse cx="1250" cy="155" rx="270" ry="72" fill={`url(#cga${id})`} filter={`url(#bf2${id})`} opacity=".55" />
+
+        {/* mid clouds */}
+        <ellipse cx="130" cy="150" rx="160" ry="52" fill="white" filter={`url(#bf1${id})`} opacity=".5" />
+        <ellipse cx="410" cy="130" rx="130" ry="44" fill="white" filter={`url(#bf1${id})`} opacity=".45" />
+        <ellipse cx="680" cy="145" rx="200" ry="58" fill="white" filter={`url(#bf1${id})`} opacity=".52" />
+        <ellipse cx="980" cy="125" rx="170" ry="50" fill="white" filter={`url(#bf1${id})`} opacity=".42" />
+        <ellipse cx="1310" cy="140" rx="150" ry="48" fill="white" filter={`url(#bf1${id})`} opacity=".5" />
+
+        {/* near-crisp top puffs */}
+        <ellipse cx="160" cy="115" rx="90" ry="35" fill="white" opacity=".65" filter={`url(#bf1${id})`} />
+        <ellipse cx="510" cy="100" rx="75" ry="30" fill="white" opacity=".55" filter={`url(#bf1${id})`} />
+        <ellipse cx="880" cy="108" rx="100" ry="38" fill="white" opacity=".6" filter={`url(#bf1${id})`} />
+        <ellipse cx="1200" cy="98" rx="80" ry="32" fill="white" opacity=".5" filter={`url(#bf1${id})`} />
+
+        {/* horizon fill matching destination color */}
+        <rect x="0" y="190" width="1440" height="30" fill={flip ? fromColor : toColor} opacity="1" />
+      </svg>
+    </div>
+  );
+
+  // ── wavy SVG divider — organic edge between sections ──
+  const WaveDivider = ({ fromBg, toBg, flip = false }) => (
+    <div style={{ position: "relative", height: 90, overflow: "hidden", marginTop: -1, marginBottom: -1 }}>
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style={{ width: "100%", height: "100%", display: "block" }} xmlns="http://www.w3.org/2000/svg">
+        <rect width="1440" height="90" fill={fromBg} />
+        <path d={flip
+          ? "M0,0 C360,90 1080,0 1440,60 L1440,90 L0,90 Z"
+          : "M0,60 C360,0 1080,90 1440,30 L1440,90 L0,90 Z"}
+          fill={toBg} />
+      </svg>
+    </div>
+  );
+
+  // ── resume card ──
+  const ResumeCard = ({ tilt = 0, delay = "0s" }) => (
+    <div style={{ animation: `floatA 7s ${delay} ease-in-out infinite`, display: "inline-block" }}>
+      <div style={{ width: 164, background: "#fff", borderRadius: 16, boxShadow: "0 24px 64px rgba(100,80,60,.2), 0 2px 8px rgba(0,0,0,.06)", padding: "16px 14px", transform: `rotate(${tilt}deg)` }}>
+        <div style={{ height: 9, width: "62%", background: BL, borderRadius: 4, marginBottom: 5 }} />
+        <div style={{ height: 5, width: "40%", background: AC, borderRadius: 3, marginBottom: 13, opacity: .55 }} />
+        {[78, 60, 88, 52, 70].map((w, i) => <div key={i} style={{ height: 4, width: `${w}%`, background: "#e8e4df", borderRadius: 2, marginBottom: 4 }} />)}
+        <div style={{ marginTop: 11, padding: "7px 9px", background: "#f0eefb", borderRadius: 8, border: "1px solid #d8d4f8" }}>
+          <div style={{ fontSize: 7, fontWeight: 700, color: AC, letterSpacing: "1.2px" }}>ATS SCORE</div>
+          <div style={{ fontSize: 20, fontWeight: 900, color: BL, letterSpacing: "-1.5px", marginTop: 2 }}>94<span style={{ fontSize: 9, opacity: .35 }}>/100</span></div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // ── plane ──
+  const Plane = () => (
+    <svg width="180" height="110" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" style={{ animation: "floatB 9s ease-in-out infinite", display: "block" }}>
+      <defs>
+        <radialGradient id="pg" cx="50%" cy="30%"><stop offset="0%" stopColor="#eac8a0" /><stop offset="100%" stopColor="#c8906a" /></radialGradient>
+        <radialGradient id="wg" cx="50%" cy="40%"><stop offset="0%" stopColor="#c09060" /><stop offset="100%" stopColor="#a07040" /></radialGradient>
+      </defs>
+      <ellipse cx="110" cy="70" rx="80" ry="24" fill="url(#pg)" />
+      <ellipse cx="145" cy="62" rx="30" ry="17" fill="#d8a882" />
+      <ellipse cx="184" cy="70" rx="20" ry="13" fill="#c08060" />
+      <ellipse cx="36" cy="65" rx="15" ry="11" fill="#b07050" />
+      <ellipse cx="105" cy="56" rx="60" ry="11" fill="url(#wg)" transform="rotate(-7 105 56)" />
+      <ellipse cx="110" cy="83" rx="55" ry="9" fill="#986040" transform="rotate(5 110 83)" />
+      <ellipse cx="163" cy="59" rx="15" ry="10" fill="#a8d0e4" opacity=".88" />
+      <ellipse cx="200" cy="70" rx="4" ry="24" fill="#8a5030" opacity=".75" />
+      <circle cx="95" cy="94" r="9" fill="#6a3828" />
+      <circle cx="125" cy="94" r="9" fill="#6a3828" />
+      <ellipse cx="110" cy="112" rx="70" ry="9" fill="rgba(90,50,20,.1)" />
+    </svg>
+  );
+
+  // ── app icons ──
+  const AppIcons = () => (
+    <div style={{ display: "flex", gap: 18, justifyContent: "center" }}>
+      {[
+        { bg: "#f5d06a", emoji: "📄", label: "Resume" },
+        { bg: BL, emoji: "🌙", label: "Dark" },
+        { bg: "#7c88e8", emoji: "✉️", label: "Letter" },
+        { bg: "#e87c6a", emoji: "📧", label: "Email" },
+      ].map((ic, i) => (
+        <div key={i} style={{ animation: `floatC 6s ${i * 0.45}s ease-in-out infinite` }}>
+          <div style={{ width: 72, height: 72, background: ic.bg, borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 10px 28px rgba(0,0,0,.14), 0 2px 6px rgba(0,0,0,.08)", fontSize: 28 }}>{ic.emoji}</div>
+          <div style={{ textAlign: "center", fontSize: 10, color: MU, marginTop: 7, fontFamily: IF, fontWeight: 500 }}>{ic.label}</div>
+        </div>
+      ))}
+    </div>
+  );
+
+  // ── mock chat ──
+  const MockChat = () => (
+    <div style={{ background: "#fff", borderRadius: 18, boxShadow: "0 20px 56px rgba(100,80,60,.15)", padding: "18px 20px", maxWidth: 340, width: "100%", fontFamily: IF }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 14, paddingBottom: 13, borderBottom: "1px solid #f0ece8" }}>
+        <div style={{ width: 30, height: 30, background: "linear-gradient(135deg,#6366f1,#8b5cf6)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <span style={{ fontSize: 11, color: "#fff", fontWeight: 700 }}>AI</span>
+        </div>
+        <div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: BL }}>resumeai</div>
+          <div style={{ fontSize: 9, color: "#10b981", fontWeight: 600 }}>● Analyzing your JD</div>
+        </div>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+        <div style={{ alignSelf: "flex-end", background: "#f0eefb", border: "1px solid #d8d4f8", borderRadius: "13px 13px 3px 13px", padding: "9px 13px", fontSize: 12, color: BL, maxWidth: "82%" }}>
+          Senior React Engineer at Stripe
+        </div>
+        <div style={{ alignSelf: "flex-start", background: "#f8f5f0", borderRadius: "13px 13px 13px 3px", padding: "9px 13px", fontSize: 12, color: BL, maxWidth: "86%" }}>
+          Found 23 ATS keywords. Rewriting your 4 roles now...
+        </div>
+        <div style={{ alignSelf: "flex-start", background: "#f8f5f0", borderRadius: "13px 13px 13px 3px", padding: "9px 13px", fontSize: 12, color: BL, maxWidth: "86%", display: "flex", alignItems: "center", gap: 7 }}>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#10b981", flexShrink: 0 }} />
+          Resume ready · 94 ATS score
+        </div>
+      </div>
+    </div>
+  );
+
+  const FeatureRow = ({ emoji, title, desc, color }) => (
+    <div style={{ display: "flex", gap: 18, alignItems: "flex-start", padding: "22px 0", borderBottom: `1px solid rgba(26,22,18,.07)` }}>
+      <div style={{ width: 48, height: 48, borderRadius: 13, background: color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 22 }}>{emoji}</div>
+      <div>
+        <div style={{ fontFamily: IS, fontSize: 18, color: BL, marginBottom: 5, lineHeight: 1.2 }}>{title}</div>
+        <div style={{ fontSize: 13, color: MU, lineHeight: 1.78, maxWidth: 360 }}>{desc}</div>
+      </div>
+    </div>
+  );
 
   return (
-    <div style={{ fontFamily: "'DM Sans',sans-serif", background: C.bg, color: C.text, minHeight: "100vh" }}>
-      {/* ambient */}
-      <div style={{ position: "fixed", top: "-20%", left: "30%", width: 600, height: 600, background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
-      <div style={{ position: "fixed", bottom: "10%", right: "10%", width: 400, height: 400, background: "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
+    <div style={{ fontFamily: IF, background: CR, color: BL, minHeight: "100vh", overflowX: "hidden" }}>
 
-      {/* nav */}
-      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, background: "rgba(12,12,20,0.88)", backdropFilter: "blur(24px)", borderBottom: `1px solid ${C.border}` }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 28px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <Logo />
+      {/* ── STYLES ── */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+        @keyframes floatA{0%,100%{transform:translateY(0px)}50%{transform:translateY(-14px)}}
+        @keyframes floatB{0%,100%{transform:translateY(0px)}50%{transform:translateY(-9px)}}
+        @keyframes floatC{0%,100%{transform:translateY(0px)}33%{transform:translateY(-8px)}66%{transform:translateY(-3px)}}
+        @keyframes riseIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* intro animations */
+        @keyframes introLogoIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+        @keyframes introExpand{from{transform:scale(1)}to{transform:scale(42)}}
+        @keyframes introFade{from{opacity:1}to{opacity:0}}
+        @keyframes introTextIn{0%{opacity:0;letter-spacing:2em}60%{opacity:1}100%{opacity:1;letter-spacing:-.02em}}
+
+        /* play button */
+        @keyframes playPulse{0%,100%{box-shadow:0 0 0 0 rgba(245,240,235,.35),0 0 0 0 rgba(245,240,235,.18)}50%{box-shadow:0 0 0 18px rgba(245,240,235,.12),0 0 0 36px rgba(245,240,235,.04)}}
+        @keyframes playRing1{0%{transform:scale(1);opacity:.5}100%{transform:scale(2.4);opacity:0}}
+        @keyframes playRing2{0%{transform:scale(1);opacity:.4}100%{transform:scale(2.8);opacity:0}}
+        @keyframes playRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        @keyframes playTriangleIn{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+
+        .riseIn{animation:riseIn .9s cubic-bezier(.22,1,.36,1) both}
+        .riseIn-1{animation:riseIn .9s .14s cubic-bezier(.22,1,.36,1) both}
+        .riseIn-2{animation:riseIn .9s .28s cubic-bezier(.22,1,.36,1) both}
+        .riseIn-3{animation:riseIn .9s .44s cubic-bezier(.22,1,.36,1) both}
+        .riseIn-4{animation:riseIn .9s .62s cubic-bezier(.22,1,.36,1) both}
+
+        .land-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 28px;background:#1a1612;color:#f5f0eb;border:none;border-radius:100px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .22s}
+        .land-btn:hover{background:#2d2720;transform:translateY(-2px);box-shadow:0 14px 36px rgba(26,22,18,.28)}
+        .land-btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;background:transparent;color:#8c7b6e;border:1.5px solid rgba(26,22,18,.2);border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .22s;text-decoration:none}
+        .land-btn-ghost:hover{border-color:rgba(26,22,18,.5);color:#1a1612;background:rgba(26,22,18,.04)}
+        .plan-card{background:#fff;border-radius:22px;padding:34px 28px;border:1.5px solid rgba(26,22,18,.09);transition:all .22s;position:relative;cursor:default}
+        .plan-card:hover{transform:translateY(-5px);box-shadow:0 28px 70px rgba(100,80,60,.15)}
+        .plan-card.featured{border-color:rgba(26,22,18,.75)}
+      `}</style>
+
+      {/* ══════════════════════════════════════════════════════
+          CINEMATIC INTRO OVERLAY
+      ══════════════════════════════════════════════════════ */}
+      {!introOver && (
+        <div style={{
+          position: "fixed", inset: 0, zIndex: 9999,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          background: CR,
+          animation: introPhase >= 2 ? "introFade .7s .1s cubic-bezier(.4,0,.2,1) both" : "none",
+          pointerEvents: introPhase >= 2 ? "none" : "all",
+        }}>
+          {/* expanding circle */}
+          <div style={{
+            position: "absolute",
+            width: 80, height: 80,
+            borderRadius: "50%",
+            background: BL,
+            transformOrigin: "center center",
+            animation: introPhase >= 1
+              ? "introExpand .9s cubic-bezier(.4,0,.2,1) both"
+              : "none",
+          }} />
+          {/* logo text — shown before expand */}
+          {introPhase === 0 && (
+            <div style={{
+              position: "relative", zIndex: 2,
+              fontFamily: IS, fontSize: 28, color: BL, letterSpacing: "-.5px",
+              animation: "introLogoIn .5s cubic-bezier(.22,1,.36,1) both",
+            }}>
+              resumeai<sup style={{ fontSize: 12, opacity: .4, verticalAlign: "super" }}>®</sup>
+            </div>
+          )}
+          {/* cream text over dark circle during expand */}
+          {introPhase >= 1 && (
+            <div style={{
+              position: "relative", zIndex: 3,
+              fontFamily: IS, fontSize: 28, color: CR, letterSpacing: "-.5px",
+              animation: "introTextIn .6s cubic-bezier(.22,1,.36,1) both",
+            }}>
+              resumeai<sup style={{ fontSize: 12, opacity: .5, verticalAlign: "super" }}>®</sup>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════
+          NAV
+      ══════════════════════════════════════════════════════ */}
+      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, background: "rgba(245,240,235,.92)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(26,22,18,.08)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 36px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <span style={{ fontFamily: IS, fontSize: 22, color: BL, letterSpacing: "-.3px" }}>
+            resumeai<sup style={{ fontSize: 10, opacity: .45, verticalAlign: "super" }}>®</sup>
+          </span>
           <nav style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            {[["How it works", "#how"], ["Pricing", "#pricing"]].map(([l, h], i) => (
-              <a key={i} href={h} style={{ fontSize: 13, color: C.textMuted, textDecoration: "none", padding: "6px 14px", borderRadius: 7, fontWeight: 500 }}
-                onMouseEnter={e => e.currentTarget.style.color = C.text}
-                onMouseLeave={e => e.currentTarget.style.color = C.textMuted}>{l}</a>
+            {[["How it works", "#how"], ["Pricing", "#pricing"]].map(([l, h]) => (
+              <a key={l} href={h} style={{ fontSize: 13, color: MU, textDecoration: "none", padding: "6px 14px", borderRadius: 8, transition: "color .15s", fontFamily: IF, fontWeight: 500 }}
+                onMouseEnter={e => e.currentTarget.style.color = BL}
+                onMouseLeave={e => e.currentTarget.style.color = MU}>{l}</a>
             ))}
-            <button onClick={onSignIn} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "9px 20px", background: C.accent, color: "#fff", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", transition: "all .18s" }}
-              onMouseEnter={e => { e.currentTarget.style.background = C.accentDark; e.currentTarget.style.transform = "translateY(-1px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = C.accent; e.currentTarget.style.transform = "none"; }}>
-              <Icon n="google" s={14} /> Sign in
+            <button className="land-btn" onClick={onSignIn} style={{ padding: "9px 20px", marginLeft: 8 }}>
+              <Icon n="google" s={13} /> Sign in
             </button>
           </nav>
         </div>
       </header>
 
-      {/* hero */}
-      <section style={{ position: "relative", zIndex: 1, maxWidth: 1100, margin: "0 auto", padding: "140px 28px 80px", textAlign: "center" }}>
-        <div className={vis ? "fade-in" : ""} style={{ display: "inline-flex", alignItems: "center", gap: 7, marginBottom: 32, padding: "5px 16px 5px 8px", background: `${C.accent}15`, border: `1px solid ${C.accent}30`, borderRadius: 100 }}>
-          <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.emerald, animation: "blink 2.5s infinite" }} />
-          <span style={{ fontSize: 12, color: C.accentLight, fontWeight: 600 }}>Resume · Cover Letter · Outreach Email — all AI-tailored</span>
+      {/* ══════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "140px 24px 80px", overflow: "hidden" }}>
+        {/* ambient blobs */}
+        <div style={{ position: "absolute", top: "5%", left: "-8%", width: 600, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(196,176,230,.38) 0%, transparent 65%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", top: "20%", right: "-6%", width: 480, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(230,196,210,.32) 0%, transparent 65%)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: "12%", left: "28%", width: 400, height: 280, borderRadius: "50%", background: "radial-gradient(circle, rgba(200,210,240,.28) 0%, transparent 65%)", pointerEvents: "none" }} />
+
+        {/* floating resume cards */}
+        <div style={{ position: "absolute", left: "3%", top: "22%", opacity: .85 }}>
+          <ResumeCard tilt={-9} delay="0s" />
+        </div>
+        <div style={{ position: "absolute", right: "2%", top: "28%", opacity: .78 }}>
+          <ResumeCard tilt={8} delay="1.4s" />
         </div>
 
-        <h1 className={vis ? "fade-in-1" : ""} style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(48px,7vw,96px)", fontWeight: 900, lineHeight: .88, letterSpacing: "-3px", color: C.text }}>
-          The resume that<br />
-          <span style={{ background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontStyle: "italic" }}>gets you hired.</span>
+        {/* pill */}
+        <div className="riseIn" style={{ display: "inline-flex", alignItems: "center", gap: 7, marginBottom: 30, padding: "5px 16px 5px 10px", background: "rgba(99,102,241,.08)", border: "1px solid rgba(99,102,241,.2)", borderRadius: 100 }}>
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10b981", display: "inline-block", boxShadow: "0 0 7px rgba(16,185,129,.7)" }} />
+          <span style={{ fontSize: 12, color: AC, fontWeight: 600, letterSpacing: ".2px" }}>Resume · Cover Letter · Outreach Email</span>
+        </div>
+
+        <h1 className="riseIn-1" style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(54px,8.5vw,112px)", lineHeight: .9, letterSpacing: "-3.5px", maxWidth: 1000, color: BL, marginBottom: 28 }}>
+          It's not a resume.<br />
+          <em style={{ fontStyle: "italic", color: AC }}>It's your career.</em>
         </h1>
 
-        <p className={vis ? "fade-in-2" : ""} style={{ fontSize: 17, color: C.textMuted, lineHeight: 1.8, maxWidth: 520, margin: "28px auto 40px" }}>
-          Paste any job description. AI extracts ATS keywords, reads company culture, and writes your resume, cover letter, and outreach email — using only your real experience.
+        <p className="riseIn-2" style={{ fontSize: "clamp(15px,1.6vw,18px)", color: MU, lineHeight: 1.82, maxWidth: 510, marginBottom: 44, fontWeight: 300 }}>
+          Paste any job description. AI tailors your resume, cover letter, and outreach email — in 60 seconds — using only your real experience.
         </p>
 
-        <div className={vis ? "fade-in-3" : ""} style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 60 }}>
-          <button onClick={onSignIn} style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 32px", background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, color: "#fff", border: "none", borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", transition: "all .2s", boxShadow: "0 8px 32px rgba(99,102,241,.35)" }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(99,102,241,.45)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 8px 32px rgba(99,102,241,.35)"; }}>
-            <Icon n="google" s={16} /> Start free — no credit card
-          </button>
-          <a href="#how" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "15px 24px", background: "none", color: C.text, border: `1.5px solid ${C.border}`, borderRadius: 10, fontSize: 14, fontWeight: 600, textDecoration: "none", transition: "all .2s" }}
-            onMouseEnter={e => e.currentTarget.style.borderColor = C.accent + "60"}
-            onMouseLeave={e => e.currentTarget.style.borderColor = C.border}>
-            See how it works <Icon n="arr" s={14} c={C.text} />
-          </a>
+        <div className="riseIn-3" style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 72 }}>
+          <button className="land-btn" onClick={onSignIn}><Icon n="google" s={15} /> Start free — no card</button>
+          <a className="land-btn-ghost" href="#how">See how it works →</a>
         </div>
 
-        {/* feature pills */}
-        <div className={vis ? "fade-in-4" : ""} style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 60 }}>
-          {[{ icon: "doc", label: "AI Resume", color: C.accent }, { icon: "pen", label: "Cover Letter", color: C.violet }, { icon: "mail", label: "Outreach Email", color: C.emerald }].map((f, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 18px", background: C.surface, border: `1.5px solid ${C.border}`, borderRadius: 100, fontSize: 13, fontWeight: 600, color: C.textMuted }}>
-              <Icon n={f.icon} s={14} c={f.color} />{f.label}
-            </div>
-          ))}
-        </div>
+        <div className="riseIn-4"><AppIcons /></div>
+      </section>
 
-        {/* stats */}
-        <div style={{ display: "flex", gap: 0, paddingTop: 48, borderTop: `1px solid ${C.border}`, flexWrap: "wrap", justifyContent: "center", maxWidth: 680, margin: "0 auto" }}>
-          {[{ n: "75%", d: "resumes never seen by humans" }, { n: "6s", d: "recruiter scans your resume" }, { n: "3×", d: "more callbacks with tailored resume" }, { n: "Free", d: "first 2 resumes, always" }].map((s, i) => (
-            <div key={i} style={{ paddingRight: 28, paddingLeft: i > 0 ? 28 : 0, borderLeft: i > 0 ? `1px solid ${C.border}` : "none", textAlign: "center", marginBottom: 10 }}>
-              <div style={{ fontFamily: "'Fraunces',serif", fontSize: 26, fontWeight: 900, letterSpacing: "-1px", lineHeight: 1, marginBottom: 4, color: C.text }}>{s.n}</div>
-              <div style={{ fontSize: 11, color: C.textLight, maxWidth: 100, lineHeight: 1.4 }}>{s.d}</div>
-            </div>
-          ))}
+      {/* ══════════════════════════════════════════════════════
+          CLOUD DIVIDER → lavender
+      ══════════════════════════════════════════════════════ */}
+      <CloudBand id="1" fromColor={CR} toColor="#ddd0ee" />
+
+      {/* ══════════════════════════════════════════════════════
+          "IT'S NOT AN APP" — lavender world
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "linear-gradient(180deg,#ddd0ee 0%,#e8e2f5 100%)", padding: "80px 32px 60px", textAlign: "center" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginBottom: 18, letterSpacing: "1px" }}>Beta Space</p>
+          <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(30px,5vw,58px)", letterSpacing: "-2px", color: BL, lineHeight: 1.08, marginBottom: 20 }}>
+            It's not an app.<br />It's not a website.<br />
+            <em style={{ fontStyle: "italic" }}>It's your career on the internet.</em>
+          </h2>
+          <p style={{ fontSize: 15, color: MU, lineHeight: 1.85, maxWidth: 460, margin: "0 auto" }}>
+            resumeai lives in your browser, gives your work a real voice, and puts a new opportunity in front of you every time.
+          </p>
+        </div>
+        <div style={{ margin: "56px auto 0", display: "flex", justifyContent: "center" }}>
+          <Plane />
+        </div>
+        <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginTop: 14 }}>You're the Captain</p>
+        <h3 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(22px,3.5vw,42px)", letterSpacing: "-1.5px", color: BL, marginTop: 6 }}>
+          Fly a world of jobs<br />in your own direction
+        </h3>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          WAVE DIVIDER → cream
+      ══════════════════════════════════════════════════════ */}
+      <WaveDivider fromBg="#e8e2f5" toBg={CR} />
+
+      {/* ══════════════════════════════════════════════════════
+          VIDEO SECTION — play only, animated button
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: CR, padding: "80px 32px 100px", textAlign: "center" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginBottom: 16 }}>See It In Action</p>
+          <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(28px,4vw,52px)", letterSpacing: "-2px", color: BL, marginBottom: 14 }}>
+            From job post to<br />interview-ready in 60 seconds.
+          </h2>
+          <p style={{ fontSize: 14, color: MU, marginBottom: 52, lineHeight: 1.8, maxWidth: 440, margin: "0 auto 52px" }}>
+            Watch how resumeai reads a job description and builds a fully tailored resume, cover letter, and email — live.
+          </p>
+
+          {/* video container */}
+          <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", boxShadow: "0 40px 100px rgba(100,80,60,.18), 0 8px 24px rgba(0,0,0,.08)", background: "#1a1612", aspectRatio: "16/9", maxWidth: 860, margin: "0 auto" }}>
+
+            {/* actual video — swap src with your recording */}
+            <video
+              ref={videoRef}
+              muted
+              playsInline
+              preload="metadata"
+              onEnded={() => setVideoPlaying(false)}
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              src="" /* ← paste your video URL here */
+            />
+
+            {/* poster overlay (cream-toned placeholder) */}
+            {!videoPlaying && (
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg,#2a2016 0%,#1a1612 50%,#221820 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                {/* subtle grid lines */}
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(245,240,235,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,235,.03) 1px,transparent 1px)", backgroundSize: "40px 40px" }} />
+                {/* soft glow */}
+                <div style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(196,160,220,.12) 0%,transparent 65%)" }} />
+                {/* mock screen content hint */}
+                <div style={{ position: "absolute", inset: "15%", background: "rgba(245,240,235,.03)", borderRadius: 12, border: "1px solid rgba(245,240,235,.06)" }} />
+              </div>
+            )}
+
+            {/* ANIMATED PLAY BUTTON */}
+            <button
+              onClick={handlePlayToggle}
+              style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 10 }}>
+
+              {videoPlaying ? (
+                /* pause icon */
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(245,240,235,.18)", border: "2px solid rgba(245,240,235,.45)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", transition: "all .2s" }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(245,240,235,.28)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "rgba(245,240,235,.18)"; e.currentTarget.style.transform = "none"; }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="4" width="4" height="16" rx="2" fill="#f5f0eb" />
+                    <rect x="14" y="4" width="4" height="16" rx="2" fill="#f5f0eb" />
+                  </svg>
+                </div>
+              ) : (
+                /* animated play button */
+                <div style={{ position: "relative", width: 90, height: 90 }}>
+                  {/* outer pulse ring 1 */}
+                  <div style={{ position: "absolute", inset: -8, borderRadius: "50%", border: "1.5px solid rgba(245,240,235,.22)", animation: "playRing1 2.2s cubic-bezier(.4,0,.6,1) infinite" }} />
+                  {/* outer pulse ring 2 */}
+                  <div style={{ position: "absolute", inset: -8, borderRadius: "50%", border: "1.5px solid rgba(245,240,235,.14)", animation: "playRing2 2.2s .55s cubic-bezier(.4,0,.6,1) infinite" }} />
+                  {/* spinning dashed ring */}
+                  <svg style={{ position: "absolute", inset: 0, animation: "playRotate 8s linear infinite" }} viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="45" cy="45" r="43" fill="none" stroke="rgba(245,240,235,.2)" strokeWidth="1" strokeDasharray="6 5" />
+                  </svg>
+                  {/* main circle */}
+                  <div style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "rgba(245,240,235,.14)", border: "2px solid rgba(245,240,235,.5)", backdropFilter: "blur(10px)", animation: "playPulse 2.8s ease-in-out infinite", transition: "all .22s" }}
+                    onMouseEnter={e => { e.currentTarget.style.background = "rgba(245,240,235,.24)"; e.currentTarget.style.borderColor = "rgba(245,240,235,.8)"; e.currentTarget.style.transform = "scale(1.08)"; }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "rgba(245,240,235,.14)"; e.currentTarget.style.borderColor = "rgba(245,240,235,.5)"; e.currentTarget.style.transform = "none"; }}>
+                  </div>
+                  {/* triangle */}
+                  <svg style={{ position: "absolute", top: "50%", left: "52%", transform: "translate(-50%,-50%)", animation: "playTriangleIn .4s cubic-bezier(.22,1,.36,1) both" }} width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 5.5l12 6.5-12 6.5V5.5z" fill="#f5f0eb" stroke="#f5f0eb" strokeWidth=".5" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              )}
+            </button>
+
+            {/* bottom label */}
+            {!videoPlaying && (
+              <div style={{ position: "absolute", bottom: 20, left: "50%", transform: "translateX(-50%)", fontSize: 11, color: "rgba(245,240,235,.45)", letterSpacing: "1.5px", textTransform: "uppercase", fontFamily: IF, whiteSpace: "nowrap" }}>
+                Watch the demo · 60 sec
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* marquee */}
-      <div style={{ background: C.surface, padding: "12px 0", overflow: "hidden", borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, position: "relative", zIndex: 1 }}>
-        <div style={{ display: "flex", animation: "marquee 28s linear infinite", width: "max-content" }}>
-          {[...Array(2)].flatMap(() => ["ATS-Optimized Resume", "AI Cover Letter", "Outreach Email", "6 Templates", "Company Culture Analysis", "Keyword Matching", "PDF Export", "Zero Hallucination"].map(item => (
-            <span key={Math.random()} style={{ padding: "0 24px", fontSize: 12, fontWeight: 600, color: C.textMuted, whiteSpace: "nowrap" }}>
-              {item} <span style={{ marginLeft: 24, color: C.accent + "60" }}>◆</span>
-            </span>
-          )))}
+      {/* ══════════════════════════════════════════════════════
+          ORNAMENTAL DIVIDER — thin ruled line with diamond
+      ══════════════════════════════════════════════════════ */}
+      <div style={{ display: "flex", alignItems: "center", gap: 0, padding: "0 40px", background: CR }}>
+        <div style={{ flex: 1, height: 1, background: "rgba(26,22,18,.1)" }} />
+        <div style={{ padding: "0 20px" }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="0" width="2" height="16" fill="rgba(26,22,18,.18)" />
+            <rect x="0" y="7" width="16" height="2" fill="rgba(26,22,18,.18)" />
+            <rect x="5" y="5" width="6" height="6" fill={CR} transform="rotate(45 8 8)" />
+            <rect x="5" y="5" width="6" height="6" stroke="rgba(26,22,18,.22)" strokeWidth="1" fill="none" transform="rotate(45 8 8)" />
+          </svg>
         </div>
+        <div style={{ flex: 1, height: 1, background: "rgba(26,22,18,.1)" }} />
       </div>
 
-      {/* how it works */}
-      <section id="how" style={{ padding: "100px 28px", maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1 }}>
-        <div style={{ textAlign: "center", marginBottom: 60 }}>
-          <p style={{ fontSize: 11, fontWeight: 700, color: C.textLight, letterSpacing: "2.5px", marginBottom: 12, textTransform: "uppercase" }}>Process</p>
-          <h2 style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(30px,4vw,52px)", fontWeight: 900, letterSpacing: "-2px", color: C.text }}>Job post → interview.</h2>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 2, background: C.border, borderRadius: 16, overflow: "hidden" }}>
-          {[
-            { n: "01", t: "Paste the job", d: "Drop in the full job description and company name.", icon: "doc" },
-            { n: "02", t: "Share your background", d: "Upload existing resume or fill guided questions.", icon: "user" },
-            { n: "03", t: "AI tailors everything", d: "Resume, cover letter, and outreach email — all tailored.", icon: "spark" },
-            { n: "04", t: "Download & apply", d: "Clean PDF, keyword-matched to beat any ATS filter.", icon: "dl" },
-          ].map((s, i) => (
-            <div key={i} style={{ background: C.surface, padding: "36px 28px", transition: "background .18s" }}
-              onMouseEnter={e => e.currentTarget.style.background = C.surfaceAlt}
-              onMouseLeave={e => e.currentTarget.style.background = C.surface}>
-              <div style={{ width: 44, height: 44, background: C.accentBg, border: `1px solid ${C.accentBorder}`, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-                <Icon n={s.icon} s={18} c={C.accent} />
-              </div>
-              <div style={{ fontSize: 10, fontWeight: 700, color: C.textLight, letterSpacing: "1.5px", marginBottom: 8 }}>{s.n}</div>
-              <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 15, marginBottom: 8, color: C.text }}>{s.t}</div>
-              <div style={{ fontSize: 13, color: C.textMuted, lineHeight: 1.75 }}>{s.d}</div>
+      {/* ══════════════════════════════════════════════════════
+          OWN YOUR DATA — two column
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: CR, padding: "80px 32px 100px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+          <div>
+            <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginBottom: 16 }}>Own Your Future</p>
+            <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(26px,4vw,52px)", letterSpacing: "-2px", color: BL, lineHeight: 1.05, marginBottom: 20 }}>
+              The resume is yours,<br />the data is yours.
+            </h2>
+            <p style={{ fontSize: 14, color: MU, lineHeight: 1.85, marginBottom: 32 }}>
+              resumeai runs on your content. You own every word it writes. Export, edit, delete — anything you want, anytime.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <FeatureRow emoji="📄" title="AI-Tailored Resume" desc="ATS-optimized. Every bullet in the JD's exact language." color="#f0f0fb" />
+              <FeatureRow emoji="✉️" title="Cover Letter" desc="Strong hook, real story, confident CTA. 300 words. Human." color="#f0faf5" />
+              <FeatureRow emoji="📧" title="Outreach Email" desc="Cold email or follow-up. Specific subject, one key win, clear ask." color="#fff5f0" />
             </div>
-          ))}
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <MockChat />
+          </div>
         </div>
       </section>
 
-      {/* pricing */}
-      <section id="pricing" style={{ padding: "100px 28px", borderTop: `1px solid ${C.border}`, position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 54 }}>
-            <p style={{ fontSize: 11, fontWeight: 700, color: C.textLight, letterSpacing: "2.5px", marginBottom: 12, textTransform: "uppercase" }}>Pricing</p>
-            <h2 style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(30px,4vw,52px)", fontWeight: 900, letterSpacing: "-2px", marginBottom: 8, color: C.text }}>Simple, honest.</h2>
-            <p style={{ fontSize: 14, color: C.textMuted }}>First 2 resumes free · ₹49 per document after · Or go lifetime</p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 12, maxWidth: 900, margin: "0 auto" }}>
-            {Object.entries(PLANS).map(([key, plan]) => (
-              <div key={key} style={{ borderRadius: 16, padding: "32px 26px", position: "relative", border: plan.popular ? `1.5px solid ${C.accent}` : `1.5px solid ${C.border}`, background: plan.popular ? C.surfaceAlt : C.surface, transition: "transform .18s", boxShadow: plan.popular ? "0 0 40px rgba(99,102,241,.2)" : "none" }}
-                onMouseEnter={e => e.currentTarget.style.transform = "translateY(-3px)"}
-                onMouseLeave={e => e.currentTarget.style.transform = "none"}>
-                {plan.popular && <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, color: "#fff", fontSize: 9, fontWeight: 800, padding: "3px 14px", borderRadius: 100, whiteSpace: "nowrap" }}>MOST POPULAR</div>}
-                {plan.badge && <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: C.amber, color: "#000", fontSize: 9, fontWeight: 800, padding: "3px 14px", borderRadius: 100, whiteSpace: "nowrap" }}>{plan.badge}</div>}
-                <div style={{ fontWeight: 700, fontSize: 11, color: plan.color, marginBottom: 8, letterSpacing: ".5px", textTransform: "uppercase" }}>{plan.name}</div>
-                <div style={{ fontFamily: "'Fraunces',serif", fontSize: 42, fontWeight: 900, letterSpacing: "-1.5px", color: C.text, marginBottom: 4 }}>
-                  {plan.inr === 0 ? "Free" : `₹${plan.inr}`}
-                </div>
-                <div style={{ fontSize: 12, color: C.textLight, marginBottom: 24 }}>{plan.inr === 0 ? "forever" : plan.inr === 49 ? "per document" : "one-time"}</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
-                  {plan.features.map((f, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                      <Icon n="chk" s={11} c={C.accent} />
-                      <span style={{ fontSize: 13, color: C.textMuted, lineHeight: 1.4 }}>{f}</span>
-                    </div>
-                  ))}
-                </div>
-                <button onClick={onSignIn} style={{ width: "100%", padding: "12px 0", borderRadius: 8, border: `1.5px solid ${plan.popular ? C.accent : C.border}`, background: plan.popular ? `linear-gradient(135deg, ${C.accent}, ${C.violet})` : "none", color: plan.popular ? "#fff" : C.text, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", transition: "all .18s" }}
-                  onMouseEnter={e => { if (!plan.popular) { e.currentTarget.style.background = C.accentBg; e.currentTarget.style.borderColor = C.accent; } }}
-                  onMouseLeave={e => { if (!plan.popular) { e.currentTarget.style.background = "none"; e.currentTarget.style.borderColor = C.border; } }}>
-                  {plan.cta}
-                </button>
+      {/* ══════════════════════════════════════════════════════
+          WAVE DIVIDER → dark
+      ══════════════════════════════════════════════════════ */}
+      <WaveDivider fromBg={CR} toBg="#1a1612" />
+
+      {/* ══════════════════════════════════════════════════════
+          DARK INTERLUDE
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#1a1612", padding: "80px 32px 100px", textAlign: "center" }}>
+        <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "rgba(196,176,230,.6)", marginBottom: 18 }}>For Dreamers</p>
+        <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(28px,4.5vw,60px)", letterSpacing: "-2px", color: "#f5f0eb", lineHeight: 1.05, marginBottom: 18 }}>
+          Build it for yourself,<br />see it run everywhere.
+        </h2>
+        <p style={{ fontSize: 14, color: "rgba(245,240,235,.42)", lineHeight: 1.85, maxWidth: 460, margin: "0 auto 44px" }}>
+          Dream up the resume the role deserves — tailored in seconds, for the future.
+        </p>
+        <button className="land-btn" onClick={onSignIn} style={{ background: "#f5f0eb", color: "#1a1612" }}
+          onMouseEnter={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "#f5f0eb"; e.currentTarget.style.transform = "none"; }}>
+          <Icon n="google" s={15} /> Get Started Free
+        </button>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          WAVE DIVIDER → cream
+      ══════════════════════════════════════════════════════ */}
+      <WaveDivider fromBg="#1a1612" toBg={CR} flip />
+
+      {/* ══════════════════════════════════════════════════════
+          HOW IT WORKS
+      ══════════════════════════════════════════════════════ */}
+      <section id="how" style={{ background: CR, padding: "60px 32px 100px" }}>
+        <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
+          <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginBottom: 16 }}>Think Outside The App</p>
+          <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(28px,4vw,52px)", letterSpacing: "-2px", color: BL, lineHeight: 1.05, marginBottom: 14 }}>
+            Software teamwork to<br />help your dream work.
+          </h2>
+          <p style={{ fontSize: 14, color: MU, marginBottom: 60, lineHeight: 1.8 }}>Connected to your goals. Everything collaborates.</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 14 }}>
+            {[
+              { emoji: "💼", title: "Paste the job", desc: "Drop any JD. Every keyword, requirement, culture signal extracted.", n: "01", bg: "#f0f0fb" },
+              { emoji: "👤", title: "Add your background", desc: "Upload your resume or answer quick guided questions.", n: "02", bg: "#f0faf5" },
+              { emoji: "✨", title: "AI tailors everything", desc: "Resume, cover letter, email — written for this exact role.", n: "03", bg: "#fff5f0" },
+              { emoji: "⬇️", title: "Download & apply", desc: "ATS-clean PDF. Live editor. Switch templates. No watermarks.", n: "04", bg: "#f5f0fb" },
+            ].map((s, i) => (
+              <div key={i} style={{ background: s.bg, borderRadius: 20, padding: "28px 22px", textAlign: "left", border: "1.5px solid rgba(26,22,18,.06)", transition: "transform .2s, box-shadow .2s" }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 18px 44px rgba(100,80,60,.11)"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
+                <div style={{ fontSize: 28, marginBottom: 14 }}>{s.emoji}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: MU, letterSpacing: "1.5px", marginBottom: 10 }}>{s.n}</div>
+                <div style={{ fontFamily: IS, fontSize: 18, color: BL, marginBottom: 8, lineHeight: 1.2 }}>{s.title}</div>
+                <div style={{ fontSize: 13, color: MU, lineHeight: 1.78 }}>{s.desc}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* final cta */}
-      <section style={{ padding: "100px 28px", textAlign: "center", borderTop: `1px solid ${C.border}`, position: "relative", zIndex: 1 }}>
-        <div style={{ maxWidth: 520, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Fraunces',serif", fontSize: "clamp(32px,5vw,64px)", fontWeight: 900, letterSpacing: "-2.5px", lineHeight: .88, marginBottom: 20, color: C.text }}>
-            Stop losing<br />
-            <span style={{ background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontStyle: "italic" }}>to the algorithm.</span>
-          </h2>
-          <p style={{ fontSize: 15, color: C.textMuted, lineHeight: 1.75, marginBottom: 34 }}>Build a resume, cover letter, and outreach email that pass every filter and speak the company's exact language.</p>
-          <button onClick={onSignIn} style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 34px", background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, color: "#fff", border: "none", borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", transition: "all .2s", boxShadow: "0 8px 32px rgba(99,102,241,.3)" }}
-            onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"}
-            onMouseLeave={e => e.currentTarget.style.transform = "none"}>
-            <Icon n="google" s={16} /> Start free with Google
-          </button>
-          <div style={{ marginTop: 12, fontSize: 12, color: C.textLight }}>No credit card · No subscription · Instant PDF</div>
+      {/* ══════════════════════════════════════════════════════
+          MARQUEE — dark band
+      ══════════════════════════════════════════════════════ */}
+      <div style={{ background: "#1a1612", padding: "18px 0", overflow: "hidden" }}>
+        <div style={{ display: "flex", animation: "marquee 34s linear infinite", width: "max-content" }}>
+          {[...Array(2)].flatMap(() =>
+            ["ATS Optimized", "AI Resume", "Cover Letter", "Cold Email", "6 Templates", "Culture Analysis", "PDF Export", "Live Editor", "Zero Fabrication"].map((item, i) => (
+              <span key={`${i}-m`} style={{ padding: "0 32px", fontSize: 10, fontWeight: 500, color: "rgba(245,240,235,.28)", whiteSpace: "nowrap", letterSpacing: "2.5px", textTransform: "uppercase", fontFamily: IF }}>
+                {item} <span style={{ marginLeft: 32, color: "rgba(196,176,230,.25)" }}>◆</span>
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════
+          PRICING
+      ══════════════════════════════════════════════════════ */}
+      <section id="pricing" style={{ background: CR, padding: "100px 32px" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginBottom: 16 }}>Building a new platform</p>
+            <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(28px,4vw,52px)", letterSpacing: "-2px", color: BL, marginBottom: 10 }}>
+              We're building a career tool<br />that inspires us.
+            </h2>
+            <p style={{ fontSize: 13, color: MU, marginTop: 12 }}>First 2 resumes free · ₹49 per doc · ₹1,499 lifetime</p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 14, maxWidth: 960, margin: "0 auto" }}>
+            {Object.entries(PLANS).map(([key, plan]) => (
+              <div key={key} className={`plan-card${plan.popular ? " featured" : ""}`}>
+                {plan.popular && <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: BL, color: CR, fontSize: 9, fontWeight: 700, padding: "4px 16px", borderRadius: 100, whiteSpace: "nowrap", letterSpacing: "1px", fontFamily: IF }}>MOST POPULAR</div>}
+                {plan.badge && <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)", background: "#f59e0b", color: "#000", fontSize: 9, fontWeight: 700, padding: "4px 16px", borderRadius: 100, whiteSpace: "nowrap" }}>{plan.badge}</div>}
+                <div style={{ fontSize: 10, fontWeight: 700, color: MU, letterSpacing: "1px", textTransform: "uppercase", marginBottom: 12, fontFamily: IF }}>{plan.name}</div>
+                <div style={{ fontFamily: IS, fontSize: 48, fontWeight: 400, letterSpacing: "-2px", color: BL, marginBottom: 4, lineHeight: 1 }}>
+                  {plan.inr === 0 ? "Free" : `₹${plan.inr}`}
+                </div>
+                <div style={{ fontSize: 12, color: MU, marginBottom: 26, fontFamily: IF }}>
+                  {plan.inr === 0 ? "forever" : plan.inr === 49 ? "per document" : "one-time"}
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
+                  {plan.features.map((f, i) => (
+                    <div key={i} style={{ display: "flex", gap: 9, alignItems: "flex-start" }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={BL} strokeWidth="2.5" strokeLinecap="round" style={{ marginTop: 2, flexShrink: 0, opacity: .45 }}><path d="M4.5 12.75l6 6 9-13.5" /></svg>
+                      <span style={{ fontSize: 13, color: MU, lineHeight: 1.45, fontFamily: IF }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <button onClick={onSignIn} style={{ width: "100%", padding: "12px 0", borderRadius: 100, border: plan.popular ? "none" : "1.5px solid rgba(26,22,18,.18)", background: plan.popular ? BL : "transparent", color: plan.popular ? CR : BL, fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: IF, transition: "all .18s" }}
+                  onMouseEnter={e => { if (plan.popular) e.currentTarget.style.background = "#2d2720"; else { e.currentTarget.style.background = "rgba(26,22,18,.04)"; e.currentTarget.style.borderColor = "rgba(26,22,18,.5)"; } }}
+                  onMouseLeave={e => { if (plan.popular) e.currentTarget.style.background = BL; else { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(26,22,18,.18)"; } }}
+                >{plan.cta}</button>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <footer style={{ borderTop: `1px solid ${C.border}`, padding: "22px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", maxWidth: 1100, margin: "0 auto", flexWrap: "wrap", gap: 10 }}>
-        <Logo size="sm" />
-        <span style={{ fontSize: 12, color: C.textLight }}>Build smarter. Get hired faster.</span>
+      {/* ══════════════════════════════════════════════════════
+          CLOUD DIVIDER into final CTA
+      ══════════════════════════════════════════════════════ */}
+      <CloudBand id="2" fromColor={CR} toColor="#e8dff5" />
+
+      {/* ══════════════════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "linear-gradient(180deg,#e8dff5 0%,#ddd4f0 100%)", padding: "80px 32px 100px", textAlign: "center" }}>
+        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+          <p style={{ fontFamily: IS, fontStyle: "italic", fontSize: 13, color: "#9070b0", marginBottom: 18 }}>Beginning a new position</p>
+          <h2 style={{ fontFamily: IS, fontWeight: 400, fontSize: "clamp(36px,5.5vw,68px)", letterSpacing: "-2.5px", lineHeight: .94, marginBottom: 22, color: BL }}>
+            We're building a resume<br />that <em style={{ fontStyle: "italic", color: AC }}>inspires us.</em>
+          </h2>
+          <p style={{ fontSize: 15, color: MU, lineHeight: 1.8, marginBottom: 40, maxWidth: 400, margin: "0 auto 40px" }}>
+            A cloud resume designed around the person. AI-powered, honest, and yours.
+          </p>
+          <button className="land-btn" onClick={onSignIn}><Icon n="google" s={15} /> Get Started Free</button>
+          <div style={{ marginTop: 14, fontSize: 12, color: MU, opacity: .65, fontFamily: IF }}>No card · 2 free resumes · Instant PDF</div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          FOOTER
+      ══════════════════════════════════════════════════════ */}
+      <footer style={{ background: "#1a1612", padding: "52px 40px 36px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr", gap: 40, marginBottom: 52, paddingBottom: 40, borderBottom: "1px solid rgba(245,240,235,.07)" }}>
+            <div>
+              <div style={{ fontFamily: IS, fontSize: 22, color: "#f5f0eb", marginBottom: 14, letterSpacing: "-.3px" }}>
+                resumeai<sup style={{ fontSize: 10, opacity: .4, verticalAlign: "super" }}>®</sup>
+              </div>
+              <div style={{ fontSize: 13, color: "rgba(245,240,235,.36)", lineHeight: 1.78, maxWidth: 210, fontFamily: IF }}>
+                The cloud resume designed around the person, not the recruiter.
+              </div>
+            </div>
+            {[
+              { h: "Product", links: ["Resume Builder", "Cover Letters", "Outreach Emails", "Templates", "Pricing"] },
+              { h: "Company", links: ["About", "Blog", "Careers", "Press"] },
+              { h: "Legal", links: ["Privacy", "Terms", "Cookies"] },
+              { h: "Support", links: ["Docs", "GitHub", "Discord", "Contact"] },
+            ].map((col, i) => (
+              <div key={i}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(245,240,235,.28)", letterSpacing: "1.8px", textTransform: "uppercase", marginBottom: 18, fontFamily: IF }}>{col.h}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+                  {col.links.map(l => (
+                    <a key={l} href="#" style={{ fontSize: 13, color: "rgba(245,240,235,.42)", textDecoration: "none", fontFamily: IF, transition: "color .15s" }}
+                      onMouseEnter={e => e.currentTarget.style.color = "#f5f0eb"}
+                      onMouseLeave={e => e.currentTarget.style.color = "rgba(245,240,235,.42)"}>{l}</a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
+            <span style={{ fontSize: 12, color: "rgba(245,240,235,.2)", fontFamily: IF }}>Beta · The Studio & Dreamers</span>
+            <span style={{ fontSize: 12, color: "rgba(245,240,235,.2)", fontFamily: IF }}>© 2025 resumeai</span>
+          </div>
+        </div>
       </footer>
     </div>
   );
 };
+
+
 
 // ─── AUTH MODAL ───────────────────────────────────────────────────────────────
 const AuthModal = ({ onClose }) => {
@@ -836,30 +1326,31 @@ const AuthModal = ({ onClose }) => {
   };
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }} onClick={onClose}>
-      <div style={{ position: "absolute", inset: 0, background: "rgba(12,12,20,.8)", backdropFilter: "blur(16px)" }} />
-      <div className="scale-in" style={{ position: "relative", background: C.surface, borderRadius: 20, padding: 44, maxWidth: 360, width: "100%", textAlign: "center", boxShadow: "0 40px 80px rgba(0,0,0,.5)", border: `1.5px solid ${C.border}` }} onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} style={{ position: "absolute", top: 14, right: 14, background: C.surfaceAlt, border: "none", cursor: "pointer", borderRadius: 7, padding: 7 }}>
-          <Icon n="x" s={14} c={C.textMuted} />
+      <div style={{ position: "absolute", inset: 0, background: "rgba(4,4,12,.88)", backdropFilter: "blur(24px)" }} />
+      <div className="scale-in" style={{ position: "relative", background: "#0f0f1f", borderRadius: 22, padding: "48px 44px", maxWidth: 380, width: "100%", textAlign: "center", boxShadow: "0 40px 100px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.07)" }} onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} style={{ position: "absolute", top: 16, right: 16, background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.08)", cursor: "pointer", borderRadius: 8, padding: "6px 7px", transition: "all .15s" }}
+          onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,.1)"}
+          onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,.05)"}>
+          <Icon n="x" s={13} c="rgba(255,255,255,.5)" />
         </button>
-        <div style={{ width: 52, height: 52, background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 22px" }}>
-          <Icon n="spark" s={24} c="#fff" />
+        <div style={{ width: 56, height: 56, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 26px", boxShadow: "0 0 40px rgba(99,102,241,.4)", animation: "float 3s ease-in-out infinite" }}>
+          <Icon n="spark" s={26} c="#fff" />
         </div>
-        <h2 style={{ fontFamily: "'Fraunces',serif", fontSize: 24, fontWeight: 700, color: C.text, marginBottom: 10 }}>Welcome to ResumeAI</h2>
-        <p style={{ fontSize: 14, color: C.textMuted, lineHeight: 1.6, marginBottom: 28 }}>Sign in to build AI-tailored resumes, cover letters, and outreach emails.</p>
-        {err && <div style={{ background: "rgba(244,63,94,.06)", border: "1px solid rgba(244,63,94,.2)", borderRadius: 7, padding: "10px 14px", fontSize: 13, color: C.rose, marginBottom: 14 }}>{err}</div>}
-        <button onClick={signIn} disabled={busy} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "13px 20px", background: C.surfaceAlt, border: `1.5px solid ${C.border}`, borderRadius: 9, cursor: busy ? "wait" : "pointer", fontSize: 14, fontWeight: 600, color: C.text, transition: "all .18s", fontFamily: "'DM Sans',sans-serif" }}
-          onMouseEnter={e => { if (!busy) { e.currentTarget.style.background = C.bgAlt; e.currentTarget.style.borderColor = C.accent + "60"; } }}
-          onMouseLeave={e => { e.currentTarget.style.background = C.surfaceAlt; e.currentTarget.style.borderColor = C.border; }}>
-          {busy ? <Spinner s={16} c={C.text} /> : <Icon n="google" s={17} />}
+        <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 28, fontWeight: 400, color: "#f5f5ff", marginBottom: 10, letterSpacing: "-.5px" }}>Welcome to resumeai</h2>
+        <p style={{ fontSize: 14, color: "rgba(240,240,248,.4)", lineHeight: 1.65, marginBottom: 30 }}>Sign in to build AI-tailored resumes, cover letters, and outreach emails.</p>
+        {err && <div style={{ background: "rgba(244,63,94,.08)", border: "1px solid rgba(244,63,94,.2)", borderRadius: 8, padding: "10px 14px", fontSize: 13, color: "#f43f5e", marginBottom: 16 }}>{err}</div>}
+        <button onClick={signIn} disabled={busy} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "14px 20px", background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 11, cursor: busy ? "wait" : "pointer", fontSize: 14, fontWeight: 500, color: "#f0f0f8", transition: "all .18s", fontFamily: "'DM Sans',sans-serif" }}
+          onMouseEnter={e => { if (!busy) { e.currentTarget.style.background = "rgba(255,255,255,.1)"; e.currentTarget.style.borderColor = "rgba(99,102,241,.5)"; } }}
+          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.06)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.12)"; }}>
+          {busy ? <Spinner s={16} c="#f0f0f8" /> : <Icon n="google" s={17} />}
           {busy ? "Connecting..." : "Continue with Google"}
         </button>
-        <p style={{ fontSize: 11, color: C.textLight, marginTop: 16 }}>First 2 resumes free · No credit card</p>
+        <p style={{ fontSize: 11, color: "rgba(255,255,255,.2)", marginTop: 18 }}>First 2 resumes free · No credit card ever</p>
       </div>
     </div>
   );
 };
 
-// ─── SIDEBAR ──────────────────────────────────────────────────────────────────
 const Sidebar = ({ page, onNav, user, profile, onSignOut, collapsed, onToggle }) => {
   const planKey = profile?.plan || "free";
   const name = user?.user_metadata?.full_name || user?.email?.split("@")[0] || "You";
@@ -869,53 +1360,72 @@ const Sidebar = ({ page, onNav, user, profile, onSignOut, collapsed, onToggle })
     { id: "resumes", label: "My Resumes", icon: "doc" },
     { id: "cover_letters", label: "Cover Letters", icon: "pen" },
     { id: "emails", label: "Outreach Emails", icon: "mail" },
-    { id: "build", label: "Build New", icon: "spark", accent: true },
-    { id: "plan", label: "Upgrade", icon: "crown" },
+    { id: "build", label: "New Application", icon: "spark", accent: true },
+    { id: "plan", label: "Upgrade Plan", icon: "crown" },
   ];
   return (
-    <div style={{ width: collapsed ? 60 : 240, background: C.surface, height: "100vh", position: "fixed", left: 0, top: 0, zIndex: 100, display: "flex", flexDirection: "column", transition: "width .22s cubic-bezier(.4,0,.2,1)", borderRight: `1.5px solid ${C.border}`, overflow: "hidden" }}>
-      <div style={{ padding: "0 14px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60, borderBottom: `1.5px solid ${C.border}`, flexShrink: 0 }}>
+    <div style={{ width: collapsed ? 62 : 248, background: "#0c0c18", height: "100vh", position: "fixed", left: 0, top: 0, zIndex: 100, display: "flex", flexDirection: "column", transition: "width .22s cubic-bezier(.4,0,.2,1)", borderRight: "1px solid rgba(255,255,255,.06)", overflow: "hidden" }}>
+      {/* header */}
+      <div style={{ padding: "0 14px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 62, borderBottom: "1px solid rgba(255,255,255,.05)", flexShrink: 0 }}>
         {collapsed
-          ? <div style={{ width: 32, height: 32, background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto", cursor: "pointer" }} onClick={onToggle}><Icon n="spark" s={15} c="#fff" /></div>
-          : <><Logo size="sm" /><button onClick={onToggle} style={{ background: "none", border: "none", cursor: "pointer", color: C.textLight, padding: 4 }}><svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 6l-6 6 6 6" /></svg></button></>
+          ? <div style={{ width: 34, height: 34, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto", cursor: "pointer", boxShadow: "0 0 20px rgba(99,102,241,.3)" }} onClick={onToggle}><Icon n="spark" s={15} c="#fff" /></div>
+          : <>
+            <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
+              <div style={{ width: 30, height: 30, borderRadius: 8, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                <Icon n="spark" s={13} c="#fff" />
+              </div>
+              <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: 17, color: "#f0f0f8", letterSpacing: "-.2px" }}>resumeai</span>
+            </div>
+            <button onClick={onToggle} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,.3)", padding: 4, borderRadius: 5, transition: "color .15s" }}
+              onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,.7)"}
+              onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.3)"}>
+              <svg width={13} height={13} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 6l-6 6 6 6" /></svg>
+            </button>
+          </>
         }
       </div>
-      <nav style={{ padding: "10px 8px", flex: 1, overflowY: "auto" }}>
+
+      {/* nav */}
+      <nav style={{ padding: "12px 8px", flex: 1, overflowY: "auto" }}>
         {navItems.map(item => {
           const active = page === item.id;
           return (
             <button key={item.id} onClick={() => onNav(item.id)}
-              style={{ width: "100%", display: "flex", alignItems: "center", gap: 9, padding: collapsed ? "10px 0" : "10px 11px", background: item.accent && !active ? `${C.accent}10` : active ? `${C.accent}15` : "none", border: active ? `1px solid ${C.accent}35` : item.accent && !active ? `1px solid ${C.accent}18` : "1px solid transparent", borderRadius: 8, color: active ? C.accentLight : item.accent ? C.accent : C.textMuted, cursor: "pointer", fontSize: 13, fontWeight: active ? 600 : 500, fontFamily: "'DM Sans',sans-serif", transition: "all .15s", marginBottom: 3, justifyContent: collapsed ? "center" : "flex-start", position: "relative" }}
-              onMouseEnter={e => { if (!active) { e.currentTarget.style.background = item.accent ? `${C.accent}14` : C.surfaceAlt; e.currentTarget.style.color = C.text; } }}
-              onMouseLeave={e => { if (!active) { e.currentTarget.style.background = item.accent ? `${C.accent}10` : "none"; e.currentTarget.style.color = active ? C.accentLight : item.accent ? C.accent : C.textMuted; } }}>
-              {active && <div style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", width: 3, height: 16, background: C.accent, borderRadius: "0 2px 2px 0" }} />}
-              <Icon n={item.icon} s={15} c={active ? C.accent : item.accent ? C.accent : "currentColor"} />
+              style={{ width: "100%", display: "flex", alignItems: "center", gap: 9, padding: collapsed ? "11px 0" : "10px 12px", background: item.accent && !active ? "rgba(99,102,241,.1)" : active ? "rgba(99,102,241,.14)" : "none", border: active ? "1px solid rgba(99,102,241,.3)" : item.accent && !active ? "1px solid rgba(99,102,241,.15)" : "1px solid transparent", borderRadius: 9, color: active ? "#a5b4fc" : item.accent ? "#818cf8" : "rgba(255,255,255,.45)", cursor: "pointer", fontSize: 13, fontWeight: active ? 600 : 400, fontFamily: "'DM Sans',sans-serif", transition: "all .15s", marginBottom: 4, justifyContent: collapsed ? "center" : "flex-start", position: "relative" }}
+              onMouseEnter={e => { if (!active) { e.currentTarget.style.background = item.accent ? "rgba(99,102,241,.14)" : "rgba(255,255,255,.05)"; e.currentTarget.style.color = "#fff"; } }}
+              onMouseLeave={e => { if (!active) { e.currentTarget.style.background = item.accent ? "rgba(99,102,241,.1)" : "none"; e.currentTarget.style.color = active ? "#a5b4fc" : item.accent ? "#818cf8" : "rgba(255,255,255,.45)"; } }}>
+              {active && !collapsed && <div style={{ position: "absolute", left: 0, top: "50%", transform: "translateY(-50%)", width: 3, height: 16, background: "#6366f1", borderRadius: "0 3px 3px 0", boxShadow: "0 0 8px rgba(99,102,241,.6)" }} />}
+              <Icon n={item.icon} s={15} c={active ? "#818cf8" : item.accent ? "#818cf8" : "currentColor"} />
               {!collapsed && <span>{item.label}</span>}
             </button>
           );
         })}
       </nav>
+
+      {/* upgrade nudge */}
       {!collapsed && planKey === "free" && (
-        <div style={{ margin: "0 8px 8px", padding: "11px 12px", background: C.accentBg, border: `1px solid ${C.accentBorder}`, borderRadius: 9 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: C.accent, marginBottom: 5 }}>Free plan</div>
-          <button onClick={() => onNav("plan")} style={{ fontSize: 11, color: C.accentLight, background: "none", border: "none", cursor: "pointer", fontWeight: 700, padding: 0, fontFamily: "'DM Sans',sans-serif" }}>Upgrade for ₹49/doc →</button>
+        <div style={{ margin: "0 8px 8px", padding: "13px 14px", background: "rgba(99,102,241,.08)", border: "1px solid rgba(99,102,241,.2)", borderRadius: 12 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: "#a5b4fc", marginBottom: 4 }}>Free plan · 2 resumes left</div>
+          <button onClick={() => onNav("plan")} style={{ fontSize: 11, color: "#818cf8", background: "none", border: "none", cursor: "pointer", fontWeight: 600, padding: 0, fontFamily: "'DM Sans',sans-serif" }}>Upgrade for ₹49/doc →</button>
         </div>
       )}
-      <div style={{ padding: "8px", borderTop: `1.5px solid ${C.border}`, flexShrink: 0 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 9, padding: collapsed ? "10px 0" : "10px", borderRadius: 8, justifyContent: collapsed ? "center" : "flex-start" }}>
+
+      {/* user */}
+      <div style={{ padding: "10px 8px", borderTop: "1px solid rgba(255,255,255,.05)", flexShrink: 0 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 9, padding: collapsed ? "10px 0" : "10px 10px", borderRadius: 9, justifyContent: collapsed ? "center" : "flex-start" }}>
           {avatar
-            ? <img src={avatar} style={{ width: 30, height: 30, borderRadius: "50%", flexShrink: 0, border: `2px solid ${C.border}` }} alt="" />
-            : <div style={{ width: 30, height: 30, background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, fontWeight: 700, color: "#fff" }}>{name[0]?.toUpperCase()}</div>
+            ? <img src={avatar} style={{ width: 30, height: 30, borderRadius: "50%", flexShrink: 0, border: "2px solid rgba(99,102,241,.3)" }} alt="" />
+            : <div style={{ width: 30, height: 30, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 12, fontWeight: 700, color: "#fff" }}>{name[0]?.toUpperCase()}</div>
           }
           {!collapsed && (
             <>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 12, fontWeight: 600, color: C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{name}</div>
-                <div style={{ fontSize: 10, color: C.textLight, textTransform: "capitalize" }}>{planKey} plan</div>
+                <div style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{name}</div>
+                <div style={{ fontSize: 10, color: "rgba(255,255,255,.3)", textTransform: "capitalize" }}>{planKey} plan</div>
               </div>
-              <button onClick={onSignOut} style={{ background: "none", border: "none", cursor: "pointer", color: C.textLight, padding: 4, borderRadius: 5, transition: "color .15s", flexShrink: 0 }}
-                onMouseEnter={e => e.currentTarget.style.color = C.rose}
-                onMouseLeave={e => e.currentTarget.style.color = C.textLight}>
+              <button onClick={onSignOut} style={{ background: "none", border: "none", cursor: "pointer", color: "rgba(255,255,255,.25)", padding: 5, borderRadius: 6, transition: "color .15s", flexShrink: 0 }}
+                onMouseEnter={e => e.currentTarget.style.color = "#f43f5e"}
+                onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.25)"}>
                 <Icon n="out" s={13} c="currentColor" />
               </button>
             </>
@@ -944,60 +1454,76 @@ const OverviewPage = ({ user, profile, resumes, coverLetters, outreachEmails, on
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
   return (
-    <div style={{ padding: "36px 36px 60px", maxWidth: 980, color: C.text }} className="fade-in">
-      <div style={{ marginBottom: 32 }}>
-        <h1 style={{ fontFamily: "'Fraunces',serif", fontSize: 30, fontWeight: 900, letterSpacing: "-1px", color: C.text, marginBottom: 4 }}>{greeting}, {name} 👋</h1>
-        <p style={{ fontSize: 14, color: C.textMuted }}>Your job application dashboard</p>
+    <div style={{ padding: "40px 40px 80px", maxWidth: 1000, color: C.text }} className="fade-in">
+      {/* header */}
+      <div style={{ marginBottom: 36 }}>
+        <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 34, fontWeight: 400, letterSpacing: "-1px", color: "#f5f5ff", marginBottom: 6 }}>{greeting}, {name}</h1>
+        <p style={{ fontSize: 14, color: "rgba(240,240,248,.4)" }}>Your job application dashboard</p>
       </div>
-      <div style={{ background: `linear-gradient(135deg, ${C.accentBg}, rgba(139,92,246,0.06))`, border: `1.5px solid ${C.accentBorder}`, borderRadius: 16, padding: "28px 32px", marginBottom: 24, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 18 }}>
+
+      {/* build CTA */}
+      <div style={{ background: "linear-gradient(135deg, rgba(99,102,241,.12), rgba(139,92,246,.08))", border: "1px solid rgba(99,102,241,.25)", borderRadius: 18, padding: "32px 36px", marginBottom: 28, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20, boxShadow: "0 0 60px rgba(99,102,241,.08)" }}>
         <div>
-          <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: 18, fontWeight: 700, color: C.text, marginBottom: 6 }}>Build a complete application kit</h2>
-          <p style={{ fontSize: 13, color: C.textMuted, maxWidth: 480, lineHeight: 1.65 }}>Resume + cover letter + outreach email — all AI-tailored to the specific role, using only your real experience.</p>
+          <h2 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 22, fontWeight: 400, color: "#f5f5ff", marginBottom: 8 }}>Build a complete application kit</h2>
+          <p style={{ fontSize: 13, color: "rgba(240,240,248,.45)", maxWidth: 480, lineHeight: 1.7 }}>Resume + cover letter + outreach email — all AI-tailored to the specific role, using only your real experience. Zero hallucination.</p>
         </div>
-        <button className="btn-primary" onClick={onBuild} style={{ padding: "12px 24px", fontSize: 14, flexShrink: 0 }}>
+        <button className="btn-primary" onClick={onBuild} style={{ padding: "13px 26px", fontSize: 14, flexShrink: 0, boxShadow: "0 0 30px rgba(99,102,241,.35)" }}>
           <Icon n="spark" s={14} c="#fff" /> New Application <Icon n="arr" s={13} c="#fff" />
         </button>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(145px,1fr))", gap: 10, marginBottom: 32 }}>
+
+      {/* stats */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(145px,1fr))", gap: 12, marginBottom: 36 }}>
         {[
-          { label: "Resumes Built", value: resumes.length, icon: "doc", color: C.accent },
-          { label: "Cover Letters", value: coverLetters.length, icon: "pen", color: C.violet },
-          { label: "Outreach Emails", value: outreachEmails.length, icon: "mail", color: C.emerald },
-          { label: "Companies Targeted", value: [...new Set([...resumes, ...coverLetters].map(r => r.company_name).filter(Boolean))].length, icon: "bolt", color: C.amber },
+          { label: "Resumes Built", value: resumes.length, icon: "doc", color: "#6366f1", glow: "rgba(99,102,241,.2)" },
+          { label: "Cover Letters", value: coverLetters.length, icon: "pen", color: "#8b5cf6", glow: "rgba(139,92,246,.2)" },
+          { label: "Outreach Emails", value: outreachEmails.length, icon: "mail", color: "#10b981", glow: "rgba(16,185,129,.15)" },
+          { label: "Companies Targeted", value: [...new Set([...resumes, ...coverLetters].map(r => r.company_name).filter(Boolean))].length, icon: "bolt", color: "#f59e0b", glow: "rgba(245,158,11,.15)" },
         ].map((s, i) => (
-          <div key={i} className="card" style={{ padding: "18px 16px" }}>
-            <div style={{ width: 34, height: 34, background: s.color + "15", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-              <Icon n={s.icon} s={15} c={s.color} />
+          <div key={i} style={{ background: "rgba(255,255,255,.03)", border: "1px solid rgba(255,255,255,.07)", borderRadius: 14, padding: "22px 20px", transition: "all .2s", cursor: "default" }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = `${s.color}40`; e.currentTarget.style.boxShadow = `0 0 30px ${s.glow}`; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.07)"; e.currentTarget.style.boxShadow = "none"; }}>
+            <div style={{ width: 36, height: 36, background: `${s.color}18`, borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14, border: `1px solid ${s.color}30` }}>
+              <Icon n={s.icon} s={16} c={s.color} />
             </div>
-            <div style={{ fontFamily: "'Fraunces',serif", fontSize: 28, fontWeight: 900, letterSpacing: "-1px", color: C.text, marginBottom: 2 }}>{s.value}</div>
-            <div style={{ fontSize: 12, color: C.textMuted }}>{s.label}</div>
+            <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 32, fontWeight: 400, letterSpacing: "-1px", color: "#f5f5ff", marginBottom: 3, lineHeight: 1 }}>{s.value}</div>
+            <div style={{ fontSize: 12, color: "rgba(240,240,248,.35)" }}>{s.label}</div>
           </div>
         ))}
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+
+      {/* recent */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
         {[
-          { title: "Recent Resumes", items: resumes.slice(0, 3), icon: "doc", color: C.accent, clickable: true },
-          { title: "Recent Cover Letters", items: coverLetters.slice(0, 3), icon: "pen", color: C.violet, clickable: false },
+          { title: "Recent Resumes", items: resumes.slice(0, 4), icon: "doc", color: "#6366f1", clickable: true, nav: "resumes" },
+          { title: "Recent Cover Letters", items: coverLetters.slice(0, 4), icon: "pen", color: "#8b5cf6", clickable: false, nav: "cover_letters" },
         ].map((section, si) => (
           <div key={si}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-              <h2 style={{ fontFamily: "'Syne',sans-serif", fontSize: 14, fontWeight: 700, color: C.text }}>{section.title}</h2>
-              <button onClick={() => onNav(si === 0 ? "resumes" : "cover_letters")} style={{ fontSize: 12, color: C.textMuted, background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>View all →</button>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+              <h3 style={{ fontSize: 13, fontWeight: 600, color: "rgba(255,255,255,.6)", letterSpacing: ".2px" }}>{section.title}</h3>
+              <button onClick={() => onNav(section.nav)} style={{ fontSize: 12, color: "rgba(99,102,241,.7)", background: "none", border: "none", cursor: "pointer", fontFamily: "'DM Sans',sans-serif", transition: "color .15s" }}
+                onMouseEnter={e => e.currentTarget.style.color = "#a5b4fc"}
+                onMouseLeave={e => e.currentTarget.style.color = "rgba(99,102,241,.7)"}>View all →</button>
             </div>
             {section.items.length === 0
-              ? <div style={{ textAlign: "center", padding: "32px 16px", border: `1.5px dashed ${C.border}`, borderRadius: 12 }}><Icon n={section.icon} s={20} c={C.textLight} /><p style={{ fontSize: 13, color: C.textMuted, marginTop: 10 }}>None yet</p></div>
-              : <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+              ? <div style={{ textAlign: "center", padding: "36px 16px", border: "1px dashed rgba(255,255,255,.08)", borderRadius: 14 }}>
+                <Icon n={section.icon} s={22} c="rgba(255,255,255,.15)" />
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,.2)", marginTop: 12 }}>None yet</p>
+              </div>
+              : <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 {section.items.map(r => (
-                  <div key={r.id} onClick={() => section.clickable && onOpenResume(r)} className="card" style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 14px", cursor: section.clickable ? "pointer" : "default" }}
-                    onMouseEnter={e => { if (section.clickable) { e.currentTarget.style.background = C.surfaceAlt; e.currentTarget.style.borderColor = C.accent + "40"; } }}
-                    onMouseLeave={e => { e.currentTarget.style.background = C.surface; e.currentTarget.style.borderColor = C.border; }}>
-                    <div style={{ width: 32, height: 32, background: section.color + "15", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div key={r.id} onClick={() => section.clickable && onOpenResume(r)}
+                    style={{ display: "flex", alignItems: "center", gap: 12, padding: "13px 16px", background: "rgba(255,255,255,.03)", border: "1px solid rgba(255,255,255,.06)", borderRadius: 12, cursor: section.clickable ? "pointer" : "default", transition: "all .18s" }}
+                    onMouseEnter={e => { if (section.clickable) { e.currentTarget.style.background = "rgba(255,255,255,.06)"; e.currentTarget.style.borderColor = `${section.color}35`; } }}
+                    onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.03)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.06)"; }}>
+                    <div style={{ width: 34, height: 34, background: `${section.color}15`, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: `1px solid ${section.color}25` }}>
                       <Icon n={section.icon} s={14} c={section.color} />
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontWeight: 600, fontSize: 12, color: C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.title}</div>
-                      <div style={{ fontSize: 10, color: C.textLight }}>{r.company_name || "—"}</div>
+                      <div style={{ fontWeight: 500, fontSize: 12, color: "rgba(255,255,255,.75)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.title}</div>
+                      <div style={{ fontSize: 11, color: "rgba(255,255,255,.25)", marginTop: 1 }}>{r.company_name || "—"}</div>
                     </div>
+                    {section.clickable && <Icon n="arr" s={12} c="rgba(255,255,255,.2)" />}
                   </div>
                 ))}
               </div>
@@ -1313,38 +1839,41 @@ const PlanPage = ({ user, profile, onPlanSuccess }) => {
 
 // ─── BUILD LAUNCHER ───────────────────────────────────────────────────────────
 const BuildLauncher = ({ onSelect, onBack }) => (
-  <div style={{ minHeight: "100vh", background: C.bg, fontFamily: "'DM Sans',sans-serif", display: "flex", flexDirection: "column" }}>
-    <header style={{ background: C.surface, borderBottom: `1.5px solid ${C.border}`, padding: "0 28px", height: 58, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-      <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 6, color: C.textMuted, fontSize: 13, fontFamily: "'DM Sans',sans-serif" }}>
-        <Icon n="back" s={14} c={C.textMuted} /> Back
+  <div style={{ minHeight: "100vh", background: "#080810", fontFamily: "'DM Sans',sans-serif", display: "flex", flexDirection: "column" }}>
+    <header style={{ background: "rgba(12,12,24,.9)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(255,255,255,.06)", padding: "0 28px", height: 62, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 7, color: "rgba(255,255,255,.4)", fontSize: 13, fontFamily: "'DM Sans',sans-serif", transition: "color .15s" }}
+        onMouseEnter={e => e.currentTarget.style.color = "#fff"}
+        onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.4)"}>
+        <Icon n="back" s={14} c="currentColor" /> Back
       </button>
-      <Logo size="sm" />
+      <span style={{ fontFamily: "'Instrument Serif',serif", fontSize: 18, color: "rgba(255,255,255,.6)" }}>resumeai</span>
       <div style={{ width: 60 }} />
     </header>
     <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 24px" }}>
       <div style={{ width: "100%", maxWidth: 560 }} className="fade-in">
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <h1 style={{ fontFamily: "'Fraunces',serif", fontSize: 32, fontWeight: 900, letterSpacing: "-1px", color: C.text, marginBottom: 8 }}>What are you building?</h1>
-          <p style={{ fontSize: 14, color: C.textMuted }}>Choose a document type to get started</p>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <h1 style={{ fontFamily: "'Instrument Serif',serif", fontSize: 38, fontWeight: 400, letterSpacing: "-1.5px", color: "#f5f5ff", marginBottom: 10 }}>What are you building?</h1>
+          <p style={{ fontSize: 14, color: "rgba(240,240,248,.35)" }}>Choose a document type to get started</p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {[
-            { id: "resume", icon: "doc", title: "AI-Tailored Resume", desc: "ATS-optimized with company culture signals and targeted bullets", color: C.accent, badge: "Most Popular" },
-            { id: "cover_letter", icon: "pen", title: "Cover Letter", desc: "Compelling letter with a strong hook and personalized story", color: C.violet },
-            { id: "email", icon: "mail", title: "Outreach Email", desc: "Professional cold email or follow-up with a clear CTA", color: C.emerald },
+            { id: "resume", icon: "doc", title: "AI-Tailored Resume", desc: "ATS-optimized with company culture signals and targeted bullets", color: "#6366f1", badge: "Most Popular" },
+            { id: "cover_letter", icon: "pen", title: "Cover Letter", desc: "Compelling letter with a strong hook and personalized story", color: "#8b5cf6" },
+            { id: "email", icon: "mail", title: "Outreach Email", desc: "Professional cold email or follow-up with a clear CTA", color: "#10b981" },
           ].map(opt => (
-            <div key={opt.id} onClick={() => onSelect(opt.id)} style={{ padding: "22px 24px", borderRadius: 14, border: `1.5px solid ${C.border}`, background: C.surface, cursor: "pointer", transition: "all .18s", display: "flex", alignItems: "center", gap: 16, position: "relative" }}
-              onMouseEnter={e => { e.currentTarget.style.background = C.surfaceAlt; e.currentTarget.style.borderColor = opt.color + "50"; e.currentTarget.style.transform = "translateX(4px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = C.surface; e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "none"; }}>
-              {opt.badge && <div style={{ position: "absolute", top: -10, right: 16, background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, color: "#fff", fontSize: 9, fontWeight: 800, padding: "3px 10px", borderRadius: 100 }}>{opt.badge}</div>}
-              <div style={{ width: 52, height: 52, background: opt.color + "15", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <div key={opt.id} onClick={() => onSelect(opt.id)}
+              style={{ padding: "24px 26px", borderRadius: 16, border: "1px solid rgba(255,255,255,.08)", background: "rgba(255,255,255,.025)", cursor: "pointer", transition: "all .2s", display: "flex", alignItems: "center", gap: 18, position: "relative" }}
+              onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.05)"; e.currentTarget.style.borderColor = `${opt.color}50`; e.currentTarget.style.transform = "translateX(5px)"; e.currentTarget.style.boxShadow = `0 0 40px ${opt.color}18`; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.025)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.08)"; e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
+              {opt.badge && <div style={{ position: "absolute", top: -11, right: 18, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", color: "#fff", fontSize: 9, fontWeight: 700, padding: "3px 12px", borderRadius: 100 }}>{opt.badge}</div>}
+              <div style={{ width: 54, height: 54, background: `${opt.color}15`, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, border: `1px solid ${opt.color}30` }}>
                 <Icon n={opt.icon} s={22} c={opt.color} />
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: 15, color: C.text, marginBottom: 4 }}>{opt.title}</div>
-                <div style={{ fontSize: 13, color: C.textMuted, lineHeight: 1.5 }}>{opt.desc}</div>
+                <div style={{ fontFamily: "'Instrument Serif',serif", fontSize: 19, color: "#f5f5ff", marginBottom: 5 }}>{opt.title}</div>
+                <div style={{ fontSize: 13, color: "rgba(240,240,248,.4)", lineHeight: 1.55 }}>{opt.desc}</div>
               </div>
-              <Icon n="arr" s={16} c={C.textLight} />
+              <Icon n="arr" s={16} c="rgba(255,255,255,.2)" />
             </div>
           ))}
         </div>
@@ -2085,7 +2614,7 @@ const BuilderPage = ({ resume: initialResume, jobData, user, savedId: initSavedI
 export default function App() {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
-  const [screen, setScreen] = useState("boot");
+  const [screen, setScreen] = useState("landing");
   const [page, setPage] = useState("overview");
   const [showAuth, setShowAuth] = useState(false);
   const [resumes, setResumes] = useState([]);
@@ -2224,16 +2753,16 @@ export default function App() {
   };
   const handlePlanSuccess = async () => { if (user) { const p = await fetchProfile(user.id); setProfile(p); } };
 
-  if (screen === "boot") return (
-    <><GS />
-      <div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: C.bg, flexDirection: "column", gap: 16 }}>
-        <div style={{ width: 56, height: 56, background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", animation: "float 2.5s ease-in-out infinite", boxShadow: "0 0 40px rgba(99,102,241,.3)" }}>
-          <Icon n="spark" s={26} c="#fff" />
-        </div>
-        <Spinner s={20} c={C.accent} />
-      </div>
-    </>
-  );
+  // if (screen === "boot") return (
+  //   <><GS />
+  //     <div style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: C.bg, flexDirection: "column", gap: 16 }}>
+  //       <div style={{ width: 56, height: 56, background: `linear-gradient(135deg, ${C.accent}, ${C.violet})`, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", animation: "float 2.5s ease-in-out infinite", boxShadow: "0 0 40px rgba(99,102,241,.3)" }}>
+  //         <Icon n="spark" s={26} c="#fff" />
+  //       </div>
+  //       <Spinner s={20} c={C.accent} />
+  //     </div>
+  //   </>
+  // );
 
   if (screen === "landing") return <><GS />{showAuth && <AuthModal onClose={() => setShowAuth(false)} />}<Landing onSignIn={() => setShowAuth(true)} /></>;
   if (screen === "build_launcher") return <><GS /><BuildLauncher onSelect={handleBuildTypeSelect} onBack={() => { setScreen("dashboard"); setRoute("dashboard"); }} /></>;
